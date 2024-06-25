@@ -8,9 +8,10 @@ This is an Orders Management System built with Spring Boot. The application prov
 - Database migrations with Flyway
 - Profiles for development and production environments
 - PostgreSQL database
+- Report on orders grouped by customers, counting orders and products by year-month
 
 ## Prerequisites
-- Java 17 or higher
+- Java 11 or higher
 - Maven 3.6.0 or higher
 - Docker and Docker Compose
 
@@ -23,37 +24,37 @@ This is an Orders Management System built with Spring Boot. The application prov
 ├── mvnw.cmd
 ├── pom.xml
 └── src
-    ├── main
-    │   ├── java
-    │   │   └── com
-    │   │       └── example
-    │   │           └── orders
-    │   │               ├── OrdersApplication.java
-    │   │               ├── config
-    │   │               │   └── DatabaseConfig.java
-    │   │               ├── controller
-    │   │               │   ├── CustomerController.java
-    │   │               │   └── OrderController.java
-    │   │               ├── model
-    │   │               │   ├── Customer.java
-    │   │               │   ├── Order.java
-    │   │               │   └── OrderDetail.java
-    │   │               ├── repository
-    │   │               │   ├── CustomerRepository.java
-    │   │               │   ├── OrderDetailRepository.java
-    │   │               │   └── OrderRepository.java
-    │   │               └── service
-    │   │                   ├── CustomerService.java
-    │   │                   └── OrderService.java
-    │   └── resources
-    │       ├── application-local.yaml
-    │       ├── application.yaml
-    │       ├── db
-    │       │   └── migration 
-    │       │       └── V1__Initial_Setup.sql
-    │       ├── static
-    │       └── templates
-    └── test
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── example
+│   │           └── orders
+│   │               ├── OrdersApplication.java
+│   │               ├── config
+│   │               │   └── DatabaseConfig.java
+│   │               ├── controller
+│   │               │   ├── CustomerController.java
+│   │               │   └── OrderController.java
+│   │               ├── model
+│   │               │   ├── Customer.java
+│   │               │   ├── Order.java
+│   │               │   └── OrderDetail.java
+│   │               ├── repository
+│   │               │   ├── CustomerRepository.java
+│   │               │   ├── OrderDetailRepository.java
+│   │               │   └── OrderRepository.java
+│   │               └── service
+│   │                   ├── CustomerService.java
+│   │                   └── OrderService.java
+│   └── resources
+│       ├── application-local.yaml
+│       ├── application.yaml
+│       ├── db
+│       │   └── migration
+│       │       └── V1__Initial_Setup.sql
+│       ├── static
+│       └── templates
+└── test
         └── java
             └── com
                 └── example
@@ -156,6 +157,7 @@ spring:
 - `POST /api/orders` - Create a new order
 - `GET /api/orders/{orderId}/details` - Retrieve order details for a specific order
 - `POST /api/orders/{orderId}/details` - Add order details to a specific order
+- `GET /api/orders/report` - Retrieve a report of orders grouped by customers, counting orders and products by year-month
 
 ## Database Migrations
 Flyway is used for database migrations. Migration scripts are located in `src/main/resources/db/migration`.
