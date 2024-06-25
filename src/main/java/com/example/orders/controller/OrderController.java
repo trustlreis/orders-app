@@ -1,5 +1,6 @@
 package com.example.orders.controller;
 
+import com.example.orders.dto.CustomerOrderReportDTO;
 import com.example.orders.model.Order;
 import com.example.orders.service.OrderService;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,11 @@ public class OrderController {
     @GetMapping
     public List<Order> findAll() {
         return orderService.findAll();
+    }
+
+    @GetMapping("/report")
+    public List<CustomerOrderReportDTO> getCustomerOrderReport() {
+        return orderService.getCustomerOrderReport();
     }
 
     @PostMapping

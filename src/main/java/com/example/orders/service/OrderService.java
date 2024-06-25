@@ -1,9 +1,11 @@
 package com.example.orders.service;
 
+import com.example.orders.dto.CustomerOrderReportDTO;
 import com.example.orders.model.Order;
 import com.example.orders.model.OrderDetail;
 import com.example.orders.repository.OrderDetailRepository;
 import com.example.orders.repository.OrderRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,4 +31,9 @@ public class OrderService {
         }
         return result;
     }
+
+    public List<CustomerOrderReportDTO> getCustomerOrderReport() {
+        return orderRepository.getCustomerOrderReport();
+    }
+
 }
